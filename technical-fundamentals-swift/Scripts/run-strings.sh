@@ -27,6 +27,8 @@ string_tests=(
     "PalindromePermutationTests"
     "OneAwayTests"
     "StringCompressionTests"
+    "RotateMatrixTests"
+    "ZeroMatrixTests"
     "StringRotationTests"
 )
 
@@ -73,7 +75,7 @@ if [ ${#failed_tests[@]} -eq 0 ]; then
     
     # Generate a simple hash for "password" like the TypeScript version
     hash_input=$(echo "${string_tests[@]}" | tr -d ' ')
-    password=$(echo -n "$hash_input" | shasum -a 256 | cut -c1-8)
+    password=$(echo -n "$hash_input" | md5)
     echo -e "${GREEN}${BOLD}✨ Use this password for your Interview Ready Submission: ${password}${NC}"
 else
     echo -e "${RED}${BOLD}${CROSS} Failed tests:${NC}"

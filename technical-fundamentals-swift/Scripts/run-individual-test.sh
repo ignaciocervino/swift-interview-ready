@@ -25,6 +25,11 @@ if [ $# -eq 0 ]; then
     echo "  - palindromePermutation"
     echo "  - oneAway"
     echo "  - stringCompression"
+<<<<<<< HEAD
+=======
+    echo "  - rotateMatrix"
+    echo "  - zeroMatrix"
+>>>>>>> main
     echo "  - stringRotation"
     echo -e "\n${YELLOW}Example: $0 isUnique${NC}"
     exit 1
@@ -51,6 +56,15 @@ case "$test_name" in
     "stringCompression")
         full_test_name="StringCompressionTests"
         ;;
+<<<<<<< HEAD
+=======
+    "rotateMatrix")
+        full_test_name="RotateMatrixTests"
+        ;;
+    "zeroMatrix")
+        full_test_name="ZeroMatrixTests"
+        ;;
+>>>>>>> main
     "stringRotation")
         full_test_name="StringRotationTests"
         ;;
@@ -80,7 +94,7 @@ if [ $exit_code -eq 0 ]; then
     echo -e "${GREEN}${BOLD}${CHECK} Test ${test_name} PASSED!${NC}"
     
     # Generate hash for individual test
-    password=$(echo -n "$test_name" | shasum -a 256 | cut -c1-8)
+    password=$(echo -n "$test_name" | md5)
     echo -e "${GREEN}Individual test password: ${password}${NC}"
 else
     echo -e "${RED}${BOLD}${CROSS} Test ${test_name} FAILED!${NC}"
@@ -88,5 +102,10 @@ else
 fi
 
 echo -e "\n${BLUE}${BOLD}Quick Commands:${NC}"
+<<<<<<< HEAD
 echo "Run all string tests: ./Scripts/run-strings.sh"
 echo "Run specific test: ./Scripts/run-individual-test.sh <test_name>"
+=======
+echo "Run all tests: swift test"
+echo "Run specific test: ./swift-test.sh <test_name>"
+>>>>>>> main
