@@ -5,5 +5,15 @@
 // and that you are given the "true" length of the string.
 
 func URLify(_ s1: String) -> String {
-    return ""
+    var result = ""
+
+    for letter in s1 {
+        if letter ==  " " {
+            result += "%20"
+        } else {
+            result.append(letter)
+        }
+    }
+
+    return result
 }
