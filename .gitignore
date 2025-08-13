@@ -3,3 +3,29 @@
 .next
 **/node_modules
 coding-challenges/yarn.lock
+
+# Swift Package Manager
+.build/
+*.xcodeproj
+*.xcworkspace
+*.swiftpm
+.swiftpm/
+Packages/
+Package.resolved
+
+# Swift build artifacts
+DerivedData/
+ModuleCache/
+*.o
+*.a
+*.dylib
+*.dSYM.zip
+*.dSYM
+
+# Xcode
+xcuserdata/
+*.xccheckout
+*.moved-aside
+*.hmap
+*.ipa
+*.xcuserstate
