@@ -9,5 +9,15 @@ func isSubstring(_ str: String, _ sub: String) -> Bool {
 }
 
 func stringRotation(_ s1: String, _ s2: String) -> Bool {
-    return false
+    guard s1.count == s2.count else { return false }
+    var s2Rotated = ""
+    for i in 0 ..< s1.count {
+        guard s1 != s2Rotated else {
+            return true
+        }
+        let currentIndex = s2.index(s2.startIndex, offsetBy: i + 1)
+        s2Rotated = String(s2[currentIndex..<s2.endIndex] + s2[s2.startIndex..<currentIndex])
+    }
+
+    return s1 == s2Rotated
 }
