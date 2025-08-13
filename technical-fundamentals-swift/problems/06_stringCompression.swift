@@ -7,5 +7,20 @@
 // You can assume the string has only uppercase and lowercase letters (a - z).
 
 func stringCompression(_ str: String) -> String {
-    return ""
+    guard str.count > 0 else { return str }
+    var compressed = ""
+    var ocurrencies = 0
+    var currentLetter = str.first!
+
+    for letter in str {
+        if letter == currentLetter {
+            ocurrencies += 1
+        } else {
+            compressed += "\(currentLetter)\(ocurrencies)"
+            currentLetter = letter
+            ocurrencies = 1
+        }
+    }
+    compressed += "\(currentLetter)\(ocurrencies)"
+    return compressed.count < str.count ? compressed : str
 }
