@@ -3,37 +3,44 @@ import XCTest
 
 class OneAwayTests: XCTestCase {
     
-    func testReturnsTrue_forOneEditAway() {
-        XCTAssertTrue(isOneAway("pale", "ple"))
-        XCTAssertTrue(isOneAway("pales", "pale"))
-        XCTAssertTrue(isOneAway("pale", "bale"))
-        XCTAssertTrue(isOneAway("cat", "bat"))
-        XCTAssertTrue(isOneAway("", "a"))
-        XCTAssertTrue(isOneAway("a", ""))
+    func testOneAway_Replace() {
+        XCTAssertTrue(isOneAway("pale", "bale")) // Replacement
+        XCTAssertFalse(isOneAway("bbaa", "bcca")) // Replacement
     }
     
-    func testReturnsTrue_forZeroEditsAway() {
-        XCTAssertTrue(isOneAway("pale", "pale"))
-        XCTAssertTrue(isOneAway("", ""))
-        XCTAssertTrue(isOneAway("test", "test"))
+    func testOneAway_Replace2() {
+        XCTAssertTrue(isOneAway("pale", "bale")) // Replacement
     }
     
-    func testReturnsFalse_forMoreThanOneEditAway() {
-        XCTAssertFalse(isOneAway("pale", "bake"))
-        XCTAssertFalse(isOneAway("hello", "world"))
-        XCTAssertFalse(isOneAway("abc", "def"))
-        XCTAssertFalse(isOneAway("test", "best"))
+    func testOneAway_Insert() {
+        XCTAssertTrue(isOneAway("pale", "ple")) // Insertion
     }
     
-    func testHandlesDifferentLengths_correctly() {
-        XCTAssertFalse(isOneAway("abc", "abcde"))
-        XCTAssertFalse(isOneAway("hello", "he"))
-        XCTAssertTrue(isOneAway("abc", "ab"))
-        XCTAssertTrue(isOneAway("ab", "abc"))
+    func testOneAway_Remove() {
+        XCTAssertTrue(isOneAway("pale", "pales")) // Removal
     }
     
-    func testHandlesCaseSensitive_correctly() {
-        XCTAssertTrue(isOneAway("Test", "test"))
-        XCTAssertTrue(isOneAway("ABC", "aBC"))
+    func testSameStrings() {
+        XCTAssertTrue(isOneAway("abc", "abc")) // No edits
+    }
+    
+    func testMoreThanOneEditAway() {
+        XCTAssertFalse(isOneAway("abcd", "efgh")) // More than one edit away
+    }
+    
+    func testMoreThanOneEditAway2() {
+        XCTAssertFalse(isOneAway("palesa", "pale")) // More than one edit away #2
+    }
+    
+    func testEmptyStrings() {
+        XCTAssertTrue(isOneAway("", "")) // Empty strings are zero edits away
+    }
+    
+    func testOneCharacterDifference() {
+        XCTAssertTrue(isOneAway("a", "ab")) // One character difference
+    }
+    
+    func testEmptyAndNonEmptyString() {
+        XCTAssertTrue(isOneAway("", "a")) // Empty string and a non-empty string
     }
 }

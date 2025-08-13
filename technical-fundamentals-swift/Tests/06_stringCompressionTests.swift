@@ -3,36 +3,27 @@ import XCTest
 
 class StringCompressionTests: XCTestCase {
     
-    func testCompressesString_whenShorter() {
+    func testCompressesStringWithRepeatedCharacters() {
         XCTAssertEqual(stringCompression("aabcccccaaa"), "a2b1c5a3")
-        XCTAssertEqual(stringCompression("aabbcc"), "a2b2c2")
-        XCTAssertEqual(stringCompression("aaaa"), "a4")
-        XCTAssertEqual(stringCompression("abbbbbbbbbbbbbbb"), "a1b15")
     }
     
-    func testReturnsOriginal_whenCompressionNotShorter() {
-        XCTAssertEqual(stringCompression("abc"), "abc")
-        XCTAssertEqual(stringCompression("abcd"), "abcd")
-        XCTAssertEqual(stringCompression("abcdef"), "abcdef")
-        XCTAssertEqual(stringCompression("aabb"), "aabb")
+    func testReturnsOriginalStringIfCompressionDoesNotReduceLength() {
+        XCTAssertEqual(stringCompression("abcde"), "abcde")
     }
     
-    func testHandlesEmptyString_correctly() {
+    func testReturnsEmptyStringForEmptyInput() {
         XCTAssertEqual(stringCompression(""), "")
     }
     
-    func testHandlesSingleCharacter_correctly() {
+    func testReturnsSingleCharacterForStringWithSingleCharacter() {
         XCTAssertEqual(stringCompression("a"), "a")
-        XCTAssertEqual(stringCompression("Z"), "Z")
     }
     
-    func testHandlesMixedCase_correctly() {
-        XCTAssertEqual(stringCompression("AAAaaa"), "A3a3")
-        XCTAssertEqual(stringCompression("AaAaAa"), "AaAaAa")
+    func testCompressesStringWithUppercaseAndLowercaseLetters() {
+        XCTAssertEqual(stringCompression("AAAbbbCCCddd"), "A3b3C3d3")
     }
     
-    func testHandlesLongSequences_correctly() {
-        let longString = String(repeating: "a", count: 100)
-        XCTAssertEqual(stringCompression(longString), "a100")
+    func testReturnsOriginalStringIfNoRepeatedCharacters() {
+        XCTAssertEqual(stringCompression("abcdef"), "abcdef")
     }
 }

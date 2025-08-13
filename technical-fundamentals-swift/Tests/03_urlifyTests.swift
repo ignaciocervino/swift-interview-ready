@@ -3,30 +3,31 @@ import XCTest
 
 class URLifyTests: XCTestCase {
     
-    func testReplacesSpaces_withPercent20() {
-        XCTAssertEqual(URLify("Mr John Smith"), "Mr%20John%20Smith")
-        XCTAssertEqual(URLify("hello world"), "hello%20world")
-        XCTAssertEqual(URLify("a b c"), "a%20b%20c")
+    func testReplacesSpacesInStringWithPercent20() {
+        XCTAssertEqual(URLify("ab c"), "ab%20c")
     }
     
-    func testHandlesNoSpaces_correctly() {
-        XCTAssertEqual(URLify("hello"), "hello")
-        XCTAssertEqual(URLify("test"), "test")
+    func testHandlesLeadingAndTrailingSpaces() {
+        XCTAssertEqual(URLify("  ab c  "), "%20%20ab%20c%20%20")
+    }
+    
+    func testReturnsEmptyStringWhenInputIsEmpty() {
         XCTAssertEqual(URLify(""), "")
     }
     
-    func testHandlesMultipleSpaces_correctly() {
-        XCTAssertEqual(URLify("hello  world"), "hello%20%20world")
-        XCTAssertEqual(URLify("a   b"), "a%20%20%20b")
+    func testDoesntModifyStringWithoutSpaces() {
+        XCTAssertEqual(URLify("abc"), "abc")
     }
     
-    func testHandlesLeadingAndTrailingSpaces_correctly() {
-        XCTAssertEqual(URLify(" hello "), "%20hello%20")
-        XCTAssertEqual(URLify("  test  "), "%20%20test%20%20")
+    func testHandlesMultipleConsecutiveSpaces() {
+        XCTAssertEqual(URLify("a  b   c"), "a%20%20b%20%20%20c")
     }
     
-    func testHandlesOnlySpaces_correctly() {
-        XCTAssertEqual(URLify(" "), "%20")
-        XCTAssertEqual(URLify("   "), "%20%20%20")
+    func testHandlesSpecialCharacters() {
+        XCTAssertEqual(URLify("a b!c"), "a%20b!c")
+    }
+    
+    func testMr3ohnSmith() {
+        XCTAssertEqual(URLify("Mr 3ohn Smith"), "Mr%203ohn%20Smith")
     }
 }

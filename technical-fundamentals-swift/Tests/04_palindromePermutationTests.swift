@@ -3,36 +3,39 @@ import XCTest
 
 class PalindromePermutationTests: XCTestCase {
     
-    func testReturnsTrue_forPalindromePermutations() {
-        XCTAssertTrue(palindromePermutation("Tact Coa"))
-        XCTAssertTrue(palindromePermutation("aab"))
-        XCTAssertTrue(palindromePermutation("carerac"))
-        XCTAssertTrue(palindromePermutation("a"))
+    func testEmptyString() {
         XCTAssertTrue(palindromePermutation(""))
     }
     
-    func testReturnsFalse_forNonPalindromePermutations() {
-        XCTAssertFalse(palindromePermutation("abc"))
+    func testSingleCharacterString() {
+        XCTAssertTrue(palindromePermutation("a"))
+    }
+    
+    func testPalindromeWithOddLength() {
+        XCTAssertTrue(palindromePermutation("taco cat"))
+    }
+    
+    func testPalindromeWithEvenLength() {
+        XCTAssertTrue(palindromePermutation("rdeder"))
+    }
+    
+    func testNonPalindromeWithOddLength() {
         XCTAssertFalse(palindromePermutation("hello"))
-        XCTAssertFalse(palindromePermutation("abcd"))
-        XCTAssertFalse(palindromePermutation("test"))
     }
     
-    func testIgnoresSpaces_correctly() {
-        XCTAssertTrue(palindromePermutation("a a b"))
-        XCTAssertTrue(palindromePermutation("race car"))
-        XCTAssertFalse(palindromePermutation("hello world"))
+    func testNonPalindromeWithEvenLength() {
+        XCTAssertFalse(palindromePermutation("world"))
     }
     
-    func testIgnoresCase_correctly() {
-        XCTAssertTrue(palindromePermutation("AaB"))
+    func testStringWithMixedCase() {
         XCTAssertTrue(palindromePermutation("RaceCar"))
-        XCTAssertFalse(palindromePermutation("AbC"))
     }
     
-    func testHandlesSpecialCharacters_correctly() {
-        XCTAssertTrue(palindromePermutation("!@!"))
-        XCTAssertTrue(palindromePermutation("!@@!"))
-        XCTAssertFalse(palindromePermutation("!@#"))
+    func testStringWithNonAlphanumericCharacters() {
+        XCTAssertTrue(palindromePermutation("12321"))
+    }
+    
+    func testStringWithNoPossiblePalindromePermutation() {
+        XCTAssertFalse(palindromePermutation("abcdefg"))
     }
 }

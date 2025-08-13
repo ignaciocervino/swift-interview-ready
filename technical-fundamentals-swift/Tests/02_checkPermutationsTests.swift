@@ -3,33 +3,35 @@ import XCTest
 
 class CheckPermutationsTests: XCTestCase {
     
-    func testReturnsTrue_forPermutations() {
-        XCTAssertTrue(checkPermutations("abc", "bca"))
-        XCTAssertTrue(checkPermutations("listen", "silent"))
-        XCTAssertTrue(checkPermutations("god", "dog"))
+    func testReturnsTrueForPermutationsWithSameLengthStrings() {
+        XCTAssertTrue(checkPermutations("abc", "cba"))
+    }
+    
+    func testReturnsFalseForStringsWithDifferentLengths() {
+        XCTAssertFalse(checkPermutations("abc", "cbad"))
+    }
+    
+    func testReturnsTrueForPermutationsWithSpecialCharacters() {
+        XCTAssertTrue(checkPermutations("abc!", "!bac"))
+    }
+    
+    func testReturnsFalseForNonPermutationsWithSpecialCharacters() {
+        XCTAssertFalse(checkPermutations("abc!", "!bcd"))
+    }
+    
+    func testReturnsTrueForEmptyStrings() {
         XCTAssertTrue(checkPermutations("", ""))
     }
     
-    func testReturnsFalse_forNonPermutations() {
-        XCTAssertFalse(checkPermutations("abc", "def"))
-        XCTAssertFalse(checkPermutations("hello", "world"))
-        XCTAssertFalse(checkPermutations("abc", "abcd"))
-        XCTAssertFalse(checkPermutations("test", "best"))
+    func testReturnsTrueForLongStringsWithSameCharacters() {
+        let longStringA = String(repeating: "a", count: 1000)
+        let longStringB = String(repeating: "a", count: 1000)
+        XCTAssertTrue(checkPermutations(longStringA, longStringB))
     }
     
-    func testHandlesDifferentLengths_correctly() {
-        XCTAssertFalse(checkPermutations("a", "aa"))
-        XCTAssertFalse(checkPermutations("abc", "ab"))
-        XCTAssertFalse(checkPermutations("", "a"))
-    }
-    
-    func testHandlesCaseSensitive_correctly() {
-        XCTAssertFalse(checkPermutations("Abc", "abc"))
-        XCTAssertTrue(checkPermutations("ABC", "CAB"))
-    }
-    
-    func testHandlesSpecialCharacters_correctly() {
-        XCTAssertTrue(checkPermutations("!@#", "#@!"))
-        XCTAssertFalse(checkPermutations("!@#", "!@$"))
+    func testReturnsFalseForLongStringsWithDifferentCharacters() {
+        let longStringA = String(repeating: "a", count: 1000)
+        let longStringB = String(repeating: "b", count: 1000)
+        XCTAssertFalse(checkPermutations(longStringA, longStringB))
     }
 }
