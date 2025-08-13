@@ -28,6 +28,16 @@ if [ $# -eq 0 ]; then
     echo "  - rotateMatrix"
     echo "  - zeroMatrix"
     echo "  - stringRotation"
+    echo "  - linkedListNode"
+    echo "  - removeDups"
+    echo "  - kthToLast"
+    echo "  - deleteMiddleNode"
+    echo "  - partition"
+    echo "  - sumLists"
+    echo "  - sumListsForwardOrder"
+    echo "  - palindrome"
+    echo "  - intersection"
+    echo "  - loopDetection"
     echo -e "\n${YELLOW}Example: $0 isUnique${NC}"
     exit 1
 fi
@@ -61,6 +71,36 @@ case "$test_name" in
         ;;
     "stringRotation")
         full_test_name="StringRotationTests"
+        ;;
+    "linkedListNode")
+        full_test_name="LinkedListNodeTests"
+        ;;
+    "removeDups")
+        full_test_name="RemoveDupsTests"
+        ;;
+    "kthToLast")
+        full_test_name="KthToLastTests"
+        ;;
+    "deleteMiddleNode")
+        full_test_name="DeleteMiddleNodeTests"
+        ;;
+    "partition")
+        full_test_name="PartitionTests"
+        ;;
+    "sumLists")
+        full_test_name="SumListsTests"
+        ;;
+    "sumListsForwardOrder")
+        full_test_name="SumListsForwardOrderTests"
+        ;;
+    "palindrome")
+        full_test_name="PalindromeTests"
+        ;;
+    "intersection")
+        full_test_name="IntersectionTests"
+        ;;
+    "loopDetection")
+        full_test_name="LoopDetectionTests"
         ;;
     *)
         full_test_name="$test_name"

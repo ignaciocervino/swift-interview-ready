@@ -31,6 +31,13 @@ Execute all string-related challenges at once:
 ./swift-strings.sh
 ```
 
+### Run All LinkedList Problems
+Execute all linked list challenges at once:
+
+```bash
+./swift-linkedlist.sh
+```
+
 ### Run Individual Problems
 Test specific problems by name:
 
@@ -41,4 +48,47 @@ Test specific problems by name:
 **Example:**
 ```bash
   ./swift-test.sh isUnique
+```
+
+## Available Problems
+
+### Arrays and Strings (Problems 1-9)
+1. **isUnique** - Determine if a string has all unique characters
+2. **checkPermutations** - Check if one string is a permutation of another
+3. **urlify** - Replace spaces with '%20' in a string
+4. **palindromePermutation** - Check if string is a permutation of a palindrome
+5. **oneAway** - Check if strings are one edit away
+6. **stringCompression** - Compress string using counts of repeated characters
+7. **rotateMatrix** - Rotate NxN matrix by 90 degrees
+8. **zeroMatrix** - Set entire row and column to 0 if element is 0
+9. **stringRotation** - Check if one string is a rotation of another
+
+### Linked Lists (Problems 10-19)
+10. **linkedListNode** - Node class and helper functions
+11. **removeDups** - Remove duplicates from an unsorted linked list
+12. **kthToLast** - Find the kth to last element of a singly linked list
+13. **deleteMiddleNode** - Delete a node in the middle of the list
+14. **partition** - Partition linked list around a value x
+15. **sumLists** - Add two numbers represented as linked lists (reverse order)
+16. **sumListsForwardOrder** - Add two numbers in forward order
+17. **palindrome** - Check if a linked list is a palindrome
+18. **intersection** - Determine if two linked lists intersect
+19. **loopDetection** - Detect if a linked list has a loop
+
+## Quick Test Commands
+
+```bash
+# Test all problems
+swift test
+
+# Test all string problems
+./swift-strings.sh
+
+# Test all linked list problems  
+./swift-linkedlist.sh
+
+# Test individual problems
+./swift-test.sh isUnique
+./swift-test.sh removeDups
+./swift-test.sh palindrome
 ```

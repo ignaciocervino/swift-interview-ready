@@ -4,7 +4,7 @@
 
 if [ $# -eq 0 ]; then
     echo "Usage: $0 <problem_name>"
-    echo "Available problems: isUnique, checkPermutations, urlify, palindromePermutation, oneAway, stringCompression, rotateMatrix, zeroMatrix, stringRotation"
+    echo "Available problems: isUnique, checkPermutations, urlify, palindromePermutation, oneAway, stringCompression, rotateMatrix, zeroMatrix, stringRotation, linkedListNode, removeDups, kthToLast, deleteMiddleNode, partition, sumLists, sumListsForwardOrder, palindrome, intersection, loopDetection"
     exit 1
 fi
 
