@@ -6,6 +6,22 @@
 // 1 -> 2 -> 2-> 2 -> 4
 
 func removeDups<T: Equatable>(_ head: Node<T>?) -> Node<T>? {
-    // TODO: Implement remove duplicates functionality
-    return nil
+    guard head != nil else { return head }
+    var occurrences = Set<T>()
+    var node = head
+    let ret = Node(head!.value)
+    var curr: Node<T>? = ret
+    occurrences.insert(head!.value)
+    
+    while node != nil {
+        if !occurrences.contains(node!.value) {
+            curr?.next = Node(node!.value)
+            occurrences.insert(node!.value)
+            curr = curr?.next
+        }
+        
+        node = node?.next
+    }
+
+    return ret
 }

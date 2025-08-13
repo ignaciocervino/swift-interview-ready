@@ -12,7 +12,7 @@ public class ListNode {
 }
 
 // Generic Node class for problems that need different types
-public class Node<T: Equatable> {
+public class Node<T: Equatable & Hashable> {
     public var value: T
     public var next: Node<T>?
     
