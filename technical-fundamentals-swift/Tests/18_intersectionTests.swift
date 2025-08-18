@@ -15,14 +15,14 @@ final class IntersectionTests: XCTestCase {
         let sharedTail = createGenericList([7, 8, 9])
         
         // Create first list: 1->2->3->shared
-        let list1 = Node(1)
-        list1.next = Node(2)
-        list1.next?.next = Node(3)
+        let list1 = Node(value: 1)
+        list1.next = Node(value: 2)
+        list1.next?.next = Node(value: 3)
         list1.next?.next?.next = sharedTail
         
         // Create second list: 4->5->shared  
-        let list2 = Node(4)
-        list2.next = Node(5)
+        let list2 = Node(value: 4)
+        list2.next = Node(value: 5)
         list2.next?.next = sharedTail
         
         let result = intersection(list1, list2)
@@ -41,19 +41,19 @@ final class IntersectionTests: XCTestCase {
     
     func testHandlesIntersectionAtEnd() {
         // Create shared last node
-        let sharedEnd = Node(9)
+        let sharedEnd = Node(value: 9)
         
         // Create first list: 1->2->3->shared
-        let list1 = Node(1)
-        list1.next = Node(2)
-        list1.next?.next = Node(3)
+        let list1 = Node(value: 1)
+        list1.next = Node(value: 2)
+        list1.next?.next = Node(value: 3)
         list1.next?.next?.next = sharedEnd
         
         // Create second list: 4->5->6->7->shared
-        let list2 = Node(4)
-        list2.next = Node(5)
-        list2.next?.next = Node(6)
-        list2.next?.next?.next = Node(7)
+        let list2 = Node(value: 4)
+        list2.next = Node(value: 5)
+        list2.next?.next = Node(value: 6)
+        list2.next?.next?.next = Node(value: 7)
         list2.next?.next?.next?.next = sharedEnd
         
         let result = intersection(list1, list2)
@@ -76,18 +76,18 @@ final class IntersectionTests: XCTestCase {
     
     func testIntersectionWithDifferentLengths() {
         // Create shared portion: 10->11
-        let shared = Node(10)
-        shared.next = Node(11)
+        let shared = Node(value: 10)
+        shared.next = Node(value: 11)
         
         // Short list: shared
         let shortList = shared
         
         // Long list: 1->2->3->4->5->shared
-        let longList = Node(1)
-        longList.next = Node(2)
-        longList.next?.next = Node(3)
-        longList.next?.next?.next = Node(4)
-        longList.next?.next?.next?.next = Node(5)
+        let longList = Node(value: 1)
+        longList.next = Node(value: 2)
+        longList.next?.next = Node(value: 3)
+        longList.next?.next?.next = Node(value: 4)
+        longList.next?.next?.next?.next = Node(value: 5)
         longList.next?.next?.next?.next?.next = shared
         
         let result = intersection(shortList, longList)

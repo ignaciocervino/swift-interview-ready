@@ -12,7 +12,7 @@
 // Output: 3 -> 1 -> 2 -> 10 -> 5 -> 5 -> 8
 // ```
 
-func partition<T: Equatable & Comparable>(_ head: Node<T>?, _ x: T) -> Node<T>? {
+func partition<T: Equatable & Hashable & Comparable>(_ head: Node<T>?, _ x: T) -> Node<T>? {
     // TODO: Implement partition functionality
     return nil
 }

@@ -5,7 +5,7 @@
 //
 // 1 -> 2 -> 2-> 2 -> 4
 
-func removeDups<T: Equatable>(_ head: Node<T>?) -> Node<T>? {
+func removeDups<T: Equatable & Hashable>(_ head: Node<T>?) -> Node<T>? {
     // TODO: Implement remove duplicates functionality
     return nil
 }
