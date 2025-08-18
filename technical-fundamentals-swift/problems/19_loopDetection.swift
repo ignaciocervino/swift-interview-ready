@@ -16,6 +16,15 @@
 // ```
 
 func detectLoop<T: Equatable & Hashable>(_ head: Node<T>?) -> Node<T>? {
-    // TODO: Implement loop detection functionality
+    var seen = Set<Node<T>>()
+    var curr: Node<T>? = head
+    
+    while let node = curr {
+        if !seen.insert(node).inserted {
+            return node
+        }
+        curr = curr?.next
+    }
+
     return nil
 }
