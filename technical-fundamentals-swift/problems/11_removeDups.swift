@@ -5,17 +5,17 @@
 //
 // 1 -> 2 -> 2-> 2 -> 4
 
-func removeDups<T: Equatable>(_ head: Node<T>?) -> Node<T>? {
+func removeDups<T: Equatable & Hashable>(_ head: Node<T>?) -> Node<T>? {
     guard head != nil else { return head }
     var occurrences = Set<T>()
     var node = head
-    let ret = Node(head!.value)
+    let ret = Node(value: head!.value)
     var curr: Node<T>? = ret
     occurrences.insert(head!.value)
     
     while node != nil {
         if !occurrences.contains(node!.value) {
-            curr?.next = Node(node!.value)
+            curr?.next = Node(value: node!.value)
             occurrences.insert(node!.value)
             curr = curr?.next
         }

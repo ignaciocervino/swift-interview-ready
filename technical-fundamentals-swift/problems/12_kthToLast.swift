@@ -2,7 +2,7 @@
 
 // Implement an algorithm to find the kth to last element of a singly linked list.
 
-func kthToLast<T: Equatable>(_ head: Node<T>?, _ k: Int) -> Node<T>? {
+func kthToLast<T: Equatable & Hashable>(_ head: Node<T>?, _ k: Int) -> Node<T>? {
     guard k > 0 else { return nil }
     let ret: Node<T>?
     var curr: Node<T>? = head

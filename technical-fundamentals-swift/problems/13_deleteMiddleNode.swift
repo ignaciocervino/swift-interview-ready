@@ -10,7 +10,7 @@
 // Result: nothing is returned, but the new linked list looks like a->b->d->e->f Hints: #72
 // ```
 
-func deleteMiddleNode<T: Equatable>(_ head: Node<T>?, _ position: Int) -> Node<T>? {
+func deleteMiddleNode<T: Equatable & Hashable>(_ head: Node<T>?, _ position: Int) -> Node<T>? {
     // TODO: Implement delete middle node functionality
     return nil
 }

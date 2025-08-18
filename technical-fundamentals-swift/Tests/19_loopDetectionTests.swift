@@ -17,11 +17,11 @@ final class LoopDetectionTests: XCTestCase {
     
     func testReturnsCorrectLoopStartNode() {
         // Create list: A->B->C->D->E->C (loop back to C)
-        let nodeA = Node("A")
-        let nodeB = Node("B")
-        let nodeC = Node("C")
-        let nodeD = Node("D")
-        let nodeE = Node("E")
+        let nodeA = Node(value: "A")
+        let nodeB = Node(value: "B")
+        let nodeC = Node(value: "C")
+        let nodeD = Node(value: "D")
+        let nodeE = Node(value: "E")
         
         nodeA.next = nodeB
         nodeB.next = nodeC
@@ -36,7 +36,7 @@ final class LoopDetectionTests: XCTestCase {
     
     func testHandlesLoopAtHead() {
         // Create list where head points back to itself: A->A
-        let nodeA = Node("A")
+        let nodeA = Node(value: "A")
         nodeA.next = nodeA
         
         let result = detectLoop(nodeA)
@@ -46,12 +46,12 @@ final class LoopDetectionTests: XCTestCase {
     
     func testHandlesLongerLoop() {
         // Create list: 1->2->3->4->5->6->3 (loop back to 3)
-        let node1 = Node(1)
-        let node2 = Node(2)
-        let node3 = Node(3)
-        let node4 = Node(4)
-        let node5 = Node(5)
-        let node6 = Node(6)
+        let node1 = Node(value: 1)
+        let node2 = Node(value: 2)
+        let node3 = Node(value: 3)
+        let node4 = Node(value: 4)
+        let node5 = Node(value: 5)
+        let node6 = Node(value: 6)
         
         node1.next = node2
         node2.next = node3
@@ -72,8 +72,8 @@ final class LoopDetectionTests: XCTestCase {
     
     func testHandlesTwoNodeLoop() {
         // Create list: A->B->A (loop back to A)
-        let nodeA = Node("A")
-        let nodeB = Node("B")
+        let nodeA = Node(value: "A")
+        let nodeB = Node(value: "B")
         
         nodeA.next = nodeB
         nodeB.next = nodeA // Loop back to A
@@ -85,7 +85,7 @@ final class LoopDetectionTests: XCTestCase {
     
     func testHandlesLongListWithSmallLoop() {
         // Create long list with small loop at the end
-        let nodes = (1...10).map { Node($0) }
+        let nodes = (1...10).map { Node(value: $0) }
         
         // Connect nodes 1->2->3->...->10
         for i in 0..<nodes.count - 1 {

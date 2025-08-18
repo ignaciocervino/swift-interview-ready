@@ -15,7 +15,7 @@
 // Hints: #50, #69, #83, #90
 // ```
 
-func detectLoop<T: Equatable>(_ head: Node<T>?) -> Node<T>? {
+func detectLoop<T: Equatable & Hashable>(_ head: Node<T>?) -> Node<T>? {
     // TODO: Implement loop detection functionality
     return nil
 }
