@@ -22,6 +22,12 @@ public class Node<T: Equatable & Hashable> {
         self.next = next
     }
 
+    public var count: Int {
+        var _count = 0
+        self.forEach { _ in _count += 1 }
+        return _count
+    }
+
     public func forEach(_ body:(Node<T>) throws -> Void) rethrows {
         var curr: Node? = self
         while curr != nil {

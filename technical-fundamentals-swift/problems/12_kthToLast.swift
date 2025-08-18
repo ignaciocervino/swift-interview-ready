@@ -3,29 +3,18 @@
 // Implement an algorithm to find the kth to last element of a singly linked list.
 
 func kthToLast<T: Equatable & Hashable>(_ head: Node<T>?, _ k: Int) -> Node<T>? {
-    guard k > 0 else { return nil }
-    let ret: Node<T>?
-    var curr: Node<T>? = head
-    var count = 0
+    guard let head else { return nil }
+    let count = head.count
+    let position = count - k
+    var currentPosition = 0
+    var ret: Node<T>? = nil
 
-    while curr != nil {
-        count += 1
-        curr = curr?.next
-    }
-
-    let element = count + 1 - k
-    count = 1
-    curr = head
-    while curr != nil {
-        if count == element {
-            ret = curr
-            return ret
+    head.forEach { node in 
+        if currentPosition == position {
+            ret = node 
         }
-
-        curr = curr?.next
-        count += 1
+        currentPosition += 1
     }
 
-
-    return nil
+    return ret
 }
