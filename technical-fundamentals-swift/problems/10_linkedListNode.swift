@@ -35,6 +35,21 @@ public class Node<T: Equatable & Hashable> {
             curr = curr?.next
         }
     }
+
+    public func remove(at position: Int) -> Node<T>? {
+        var curr: Node<T>? = self
+        var count = 1
+        self.forEach { node in 
+            if position - 1 == count {
+                curr?.next = curr?.next?.next
+            }
+            
+            curr = curr?.next
+            count += 1
+        }
+
+        return self
+    }
 }
 
 // Helper functions for creating and working with linked lists

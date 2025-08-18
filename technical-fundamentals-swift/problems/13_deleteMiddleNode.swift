@@ -11,6 +11,6 @@
 // ```
 
 func deleteMiddleNode<T: Equatable & Hashable>(_ head: Node<T>?, _ position: Int) -> Node<T>? {
-    // TODO: Implement delete middle node functionality
-    return nil
+    guard position > 0 && position < head?.count ?? 0 else { return head }
+    return head?.remove(at: position)
 }
