@@ -6,22 +6,18 @@
 // 1 -> 2 -> 2-> 2 -> 4
 
 func removeDups<T: Equatable & Hashable>(_ head: Node<T>?) -> Node<T>? {
-    guard head != nil else { return head }
-    var occurrences = Set<T>()
-    var node = head
-    let ret = Node(value: head!.value)
-    var curr: Node<T>? = ret
-    occurrences.insert(head!.value)
+    guard let head else { return nil }
     
-    while node != nil {
-        if !occurrences.contains(node!.value) {
-            curr?.next = Node(value: node!.value)
-            occurrences.insert(node!.value)
-            curr = curr?.next
+    var buffer: Set<T> = [head.value]
+    var current: Node<T>? = head
+
+    head.forEach { node in
+        if buffer.insert(node.value).inserted {
+            current = node
+        } else {
+            current?.next = node.next
         }
-        
-        node = node?.next
     }
 
-    return ret
+    return head
 }

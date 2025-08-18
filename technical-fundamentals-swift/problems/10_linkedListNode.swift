@@ -4,6 +4,10 @@ public class LinkedList<T: Equatable & Hashable> {
     public var head: Node<T>?
     public var tail: Node<T>?
 
+    init(head: Node<T>? = nil) {
+        self.head = head
+    }
+
     public var isEmpty: Bool {
         head == nil
     }
@@ -16,6 +20,14 @@ public class Node<T: Equatable & Hashable> {
     public init(value: T, _ next: Node<T>? = nil) {
         self.value = value
         self.next = next
+    }
+
+    public func forEach(_ body:(Node<T>) throws -> Void) rethrows {
+        var curr: Node? = self
+        while curr != nil {
+            try body(curr!)
+            curr = curr?.next
+        }
     }
 }
 
