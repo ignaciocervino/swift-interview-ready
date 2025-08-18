@@ -41,7 +41,7 @@ public struct LinkedList<T: Equatable & Hashable> {
     }
 }
 
-public class Node<T: Equatable & Hashable> {
+public class Node<T: Equatable & Hashable>: Hashable {
     public var value: T
     public var next: Node<T>?
     
@@ -91,6 +91,14 @@ public class Node<T: Equatable & Hashable> {
         }
 
         curr?.next = node        
+    }
+
+    public static func == (lhs: Node<T>, rhs: Node<T>) -> Bool {
+        return lhs === rhs  // Reference equality
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(ObjectIdentifier(self))
     }
 }
 
