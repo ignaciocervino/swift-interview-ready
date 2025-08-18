@@ -13,6 +13,37 @@
 // ```
 
 func partition<T: Equatable & Hashable & Comparable>(_ head: Node<T>?, _ x: T) -> Node<T>? {
-    // TODO: Implement partition functionality
-    return nil
+    var left: Node<T>? = nil
+    var right: Node<T>? = nil
+    var headLeft: Node<T>? = nil
+    var headRight: Node<T>? = nil
+
+    head?.forEach { node in 
+        if node.value < x {
+            if left == nil {
+                headLeft = node
+                left = node
+            } else {
+                left?.next = node
+                left = node
+            }
+        } else {
+            if right == nil {
+                headRight = node
+                right = node
+            } else {
+                right?.next = node
+                right = node
+            }
+        }
+    }
+
+    if headLeft != nil {
+        left?.next = headRight
+        right?.next = nil
+    } else {
+        return headRight
+    }
+
+    return headLeft
 }
