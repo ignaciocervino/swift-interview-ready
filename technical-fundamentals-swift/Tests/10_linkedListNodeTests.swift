@@ -12,7 +12,7 @@ final class LinkedListNodeTests: XCTestCase {
         XCTAssertEqual(node2.value, 5)
         XCTAssertNil(node2.next)
         
-        let node3 = Node(value: 10, node2)
+        let node3 = Node(value: 10, next: node2)
         XCTAssertEqual(node3.value, 10)
         XCTAssertEqual(node3.next?.value, 5)
     }
@@ -26,7 +26,7 @@ final class LinkedListNodeTests: XCTestCase {
         XCTAssertEqual(stringNode.value, "hello")
         XCTAssertNil(stringNode.next)
         
-        let connectedNode = Node(value: 1, Node(value: 2))
+        let connectedNode = Node(value: 1, next: Node(value: 2))
         XCTAssertEqual(connectedNode.value, 1)
         XCTAssertEqual(connectedNode.next?.value, 2)
     }

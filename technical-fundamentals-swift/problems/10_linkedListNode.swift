@@ -1,6 +1,6 @@
 // 10. *Implement a Linked List*;
 
-public class LinkedList<T: Equatable & Hashable> {
+public struct LinkedList<T: Equatable & Hashable> {
     public var head: Node<T>?
     public var tail: Node<T>?
 
@@ -11,13 +11,41 @@ public class LinkedList<T: Equatable & Hashable> {
     public var isEmpty: Bool {
         head == nil
     }
+
+    public mutating func push(_ value: T) {
+        head = Node(value: value, next: head)
+        if tail == nil {
+            tail = head
+        }
+    }
+
+    public mutating func append(value: T) {
+        guard !isEmpty else {
+            push(value)
+            return
+        }
+        
+        tail?.next = Node(value: value)
+        tail = tail?.next
+    }
+
+    public mutating func concat(_ list: LinkedList<T>?) {
+        guard !isEmpty else {
+            head = list?.head
+            tail = list?.tail
+            return
+        }
+
+        tail?.next = list?.head
+        tail = list?.tail
+    }
 }
 
 public class Node<T: Equatable & Hashable> {
     public var value: T
     public var next: Node<T>?
     
-    public init(value: T, _ next: Node<T>? = nil) {
+    public init(value: T, next: Node<T>? = nil) {
         self.value = value
         self.next = next
     }
@@ -49,6 +77,20 @@ public class Node<T: Equatable & Hashable> {
         }
 
         return self
+    }
+
+    public func push(value: T) -> Node<T>? {
+        return Node(value: value, next: self)
+    }
+
+    public func concat(_ node: Node<T>?) {
+        var curr: Node<T>? = self
+
+        self.forEach { node in 
+            curr = node
+        }
+
+        curr?.next = node        
     }
 }
 
