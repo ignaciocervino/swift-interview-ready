@@ -28,10 +28,10 @@ public class Node<T: Equatable & Hashable> {
         return _count
     }
 
-    public func forEach(_ body:(Node<T>) throws -> Void) rethrows {
+    public func forEach(_ visit:(Node<T>) -> Void) {
         var curr: Node? = self
         while curr != nil {
-            try body(curr!)
+            visit(curr!)
             curr = curr?.next
         }
     }
