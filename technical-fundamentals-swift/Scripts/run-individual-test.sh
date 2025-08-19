@@ -38,6 +38,12 @@ if [ $# -eq 0 ]; then
     echo "  - palindrome"
     echo "  - intersection"
     echo "  - loopDetection"
+    echo "  - threeStacks"
+    echo "  - stackMin"
+    echo "  - stackOfPlates"
+    echo "  - queueViaStacks"
+    echo "  - sortStack"
+    echo "  - animalShelter"
     echo -e "\n${YELLOW}Example: $0 isUnique${NC}"
     exit 1
 fi
@@ -101,6 +107,24 @@ case "$test_name" in
         ;;
     "loopDetection")
         full_test_name="LoopDetectionTests"
+        ;;
+    "threeStacks")
+        full_test_name="ThreeStacksTests"
+        ;;
+    "stackMin")
+        full_test_name="StackMinTests"
+        ;;
+    "stackOfPlates")
+        full_test_name="StackOfPlatesTests"
+        ;;
+    "queueViaStacks")
+        full_test_name="QueueViaStacksTests"
+        ;;
+    "sortStack")
+        full_test_name="SortStackTests"
+        ;;
+    "animalShelter")
+        full_test_name="AnimalShelterTests"
         ;;
     *)
         full_test_name="$test_name"

@@ -38,6 +38,13 @@ Execute all linked list challenges at once:
 ./swift-linkedlist.sh
 ```
 
+### Run All Stacks and Queues Problems
+Execute all stack and queue challenges at once:
+
+```bash
+./swift-stacks-queues.sh
+```
+
 ### Run Individual Problems
 Test specific problems by name:
 
@@ -75,6 +82,14 @@ Test specific problems by name:
 18. **intersection** - Determine if two linked lists intersect
 19. **loopDetection** - Detect if a linked list has a loop
 
+### Stacks and Queues (Problems 21-26)
+21. **threeStacks** - Implement three stacks using a single array
+22. **stackMin** - Stack with min() function that operates in O(1) time
+23. **stackOfPlates** - Set of stacks that creates new stack when capacity exceeded
+24. **queueViaStacks** - Implement a queue using two stacks
+25. **sortStack** - Sort a stack with smallest items on top
+26. **animalShelter** - Animal shelter operating on FIFO with dog/cat preferences
+
 ## Quick Test Commands
 
 ```bash
@@ -87,8 +102,12 @@ swift test
 # Test all linked list problems  
 ./swift-linkedlist.sh
 
+# Test all stacks and queues problems
+./swift-stacks-queues.sh
+
 # Test individual problems
 ./swift-test.sh isUnique
 ./swift-test.sh removeDups
-./swift-test.sh palindrome
+./swift-test.sh threeStacks
+./swift-test.sh animalShelter
 ```
