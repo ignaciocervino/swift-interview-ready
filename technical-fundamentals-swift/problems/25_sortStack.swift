@@ -6,27 +6,36 @@
 // The stack supports the following operations: push, pop, peek, and isEmpty.
 
 class SortStack<T: Comparable> {
-    
-    init() {
-        // TODO: Implement sorted stack
-    }
+    private var stack = [T]()
+    private var auxStack = [T]()
+
+    init() {}
     
     func push(_ value: T) {
-        // TODO: Implement push functionality maintaining sort order
+        while !stack.isEmpty {
+            if let peek = stack.last, value > peek {
+                auxStack.append(stack.popLast()!)
+            } else {
+                break
+            }
+        }
+
+        stack.append(value)
+
+        while !auxStack.isEmpty {
+            stack.append(auxStack.popLast()!)
+        }
     }
     
     func pop() -> T? {
-        // TODO: Implement pop functionality
-        return nil
+        stack.popLast()
     }
     
     func peek() -> T? {
-        // TODO: Implement peek functionality
-        return nil
+        stack.last
     }
     
     func isEmpty() -> Bool {
-        // TODO: Implement isEmpty functionality
-        return true
+        stack.isEmpty
     }
 }
