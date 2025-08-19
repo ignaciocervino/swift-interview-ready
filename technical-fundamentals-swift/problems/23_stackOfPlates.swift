@@ -10,18 +10,54 @@
 
 // FOLLOW UP: Implement a function popAt(int index) which performs a pop operation on a specific sub-stack.
 
+// [1,2,3], [4,5,6], [3,4,5]
+
 class SetOfStacks<T> {
+    private var stacks: Array<Array<T?>>
+    private let capacity: Int
+    private var currentIndex = 0
+    private var subStackPosition = 0
     
     init(capacity: Int) {
-        // TODO: Implement set of stacks with capacity
+        self.capacity = capacity
+        self.stacks = Array(arrayLiteral: Array(repeating: nil, count: capacity))
     }
     
     func push(_ value: T) {
-        // TODO: Implement push functionality
+        if subStackPosition < capacity {
+            stacks[currentIndex][subStackPosition] = value
+            subStackPosition += 1
+        }
+
+        if subStackPosition >= capacity {
+            subStackPosition = 0
+            currentIndex += 1
+            if stacks.count < currentIndex + 1 {
+                stacks.append(Array(repeating: nil, count: capacity))
+            }
+        }
     }
     
     func pop() -> T? {
-        // TODO: Implement pop functionality
+        if subStackPosition <= 0 && currentIndex <= 0 {
+            return nil
+        } else if subStackPosition <= 0 {
+            currentIndex -= 1
+            subStackPosition = capacity
+        }
+
+        let position: Int = (subStackPosition == 0) ? 0 : subStackPosition - 1
+        if let value = stacks[currentIndex][position] {
+            stacks[currentIndex][position] = nil
+            subStackPosition -= 1
+            return value
+        }
+
         return nil
+    }
+
+    func pop(at index: Int) -> T? {
+        guard index <= currentIndex, index >= 0 else { return nil }
+        return stacks[index].popLast()!
     }
 }
