@@ -26,27 +26,37 @@ class Animal {
 }
 
 class AnimalShelter {
+    private var dogQueue = [Animal]()
+    private var catQueue = [Animal]()
+    private var count = 0
     
-    init() {
-        // TODO: Implement animal shelter
-    }
+    init() {}
     
     func enqueue(type: AnimalType) {
-        // TODO: Implement enqueue functionality
+        let animal = Animal(type: type, arrivalTime: count)
+        count += 1
+        switch type {
+        case .dog:
+            dogQueue.append(animal)
+        case .cat:
+            catQueue.append(animal)
+        }
     }
     
+    // O(n)
     func dequeueAny() -> Animal? {
-        // TODO: Implement dequeue any animal functionality
-        return nil
+        if dogQueue.first?.arrivalTime ?? Int.max < catQueue.first?.arrivalTime ?? Int.max {
+            return !dogQueue.isEmpty ? dogQueue.removeFirst() : nil
+        } else {
+            return !catQueue.isEmpty ? catQueue.removeFirst() : nil
+        }
     }
     
     func dequeueDog() -> Animal? {
-        // TODO: Implement dequeue dog functionality
-        return nil
+        !dogQueue.isEmpty ? dogQueue.removeFirst() : nil
     }
     
     func dequeueCat() -> Animal? {
-        // TODO: Implement dequeue cat functionality
-        return nil
+        !catQueue.isEmpty ? catQueue.removeFirst() : nil
     }
 }
