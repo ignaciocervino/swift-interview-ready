@@ -5,22 +5,38 @@
 //
 
 class StackMin<T: Comparable> {
+    private var stack: [T]
+    private var minimumAuxStack: [T]
     
     init() {
-        // TODO: Implement stack with min tracking
+        self.stack = []
+        self.minimumAuxStack = []
     }
     
     func push(_ value: T) {
-        // TODO: Implement push functionality
+        stack.append(value)
+
+        if let min = minimumAuxStack.last {
+            if value < min {
+                minimumAuxStack.append(value)
+            }
+        } else {
+            minimumAuxStack.append(value)
+        }
     }
     
     func pop() -> T? {
-        // TODO: Implement pop functionality
+        if let popedValue = stack.popLast() {
+            if minimumAuxStack.last == popedValue {
+                minimumAuxStack.removeLast()
+            }
+            return popedValue
+        }
+
         return nil
     }
     
     func min() -> T? {
-        // TODO: Implement min functionality
-        return nil
+        minimumAuxStack.last
     }
 }
