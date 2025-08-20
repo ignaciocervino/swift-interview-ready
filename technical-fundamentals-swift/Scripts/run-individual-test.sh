@@ -44,6 +44,16 @@ if [ $# -eq 0 ]; then
     echo "  - queueViaStacks"
     echo "  - sortStack"
     echo "  - animalShelter"
+    echo "  - trees"
+    echo "  - hasRouteBetweenNodes"
+    echo "  - minimalTree"
+    echo "  - listOfDepths"
+    echo "  - checkBalanced"
+    echo "  - validateBST"
+    echo "  - successor"
+    echo "  - buildOrder"
+    echo "  - firstCommonAncestor"
+    echo "  - bstSequences"
     echo -e "\n${YELLOW}Example: $0 isUnique${NC}"
     exit 1
 fi
@@ -126,6 +136,36 @@ case "$test_name" in
     "animalShelter")
         full_test_name="AnimalShelterTests"
         ;;
+    "trees")
+        full_test_name="TreesTests"
+        ;;
+    "hasRouteBetweenNodes")
+        full_test_name="HasRouteBetweenNodesTests"
+        ;;
+    "minimalTree")
+        full_test_name="MinimalTreeTests"
+        ;;
+    "listOfDepths")
+        full_test_name="ListOfDepthsTests"
+        ;;
+    "checkBalanced")
+        full_test_name="CheckBalancedTests"
+        ;;
+    "validateBST")
+        full_test_name="ValidateBSTTests"
+        ;;
+    "successor")
+        full_test_name="SuccessorTests"
+        ;;
+    "buildOrder")
+        full_test_name="BuildOrderTests"
+        ;;
+    "firstCommonAncestor")
+        full_test_name="FirstCommonAncestorTests"
+        ;;
+    "bstSequences")
+        full_test_name="BSTSequencesTests"
+        ;;
     *)
         full_test_name="$test_name"
         ;;
@@ -162,3 +202,6 @@ fi
 echo -e "\n${BLUE}${BOLD}Quick Commands:${NC}"
 echo "Run all tests: swift test"
 echo "Run specific test: ./swift-test.sh <test_name>"
+
+# Exit with the same code as the test command
+exit $exit_code
