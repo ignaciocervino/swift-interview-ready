@@ -45,6 +45,13 @@ Execute all stack and queue challenges at once:
 ./swift-stacks-queues.sh
 ```
 
+### Run All Trees and Graphs Problems
+Execute all trees and graphs challenges at once:
+
+```bash
+./swift-trees-graphs.sh
+```
+
 ### Run Individual Problems
 Test specific problems by name:
 
@@ -90,6 +97,18 @@ Test specific problems by name:
 25. **sortStack** - Sort a stack with smallest items on top
 26. **animalShelter** - Animal shelter operating on FIFO with dog/cat preferences
 
+### Trees and Graphs (Problems 30-39)
+30. **trees** - Basic tree algorithms: Depth-first search and Breadth-first search
+31. **hasRouteBetweenNodes** - Find route between two nodes in directed graph
+32. **minimalTree** - Create binary search tree with minimal height from sorted array
+33. **listOfDepths** - Create linked list of nodes at each depth level
+34. **checkBalanced** - Check if binary tree is balanced
+35. **validateBST** - Validate if binary tree is a binary search tree
+36. **successor** - Find in-order successor of given node in BST
+37. **buildOrder** - Find build order for projects with dependencies
+38. **firstCommonAncestor** - Find first common ancestor of two nodes
+39. **bstSequences** - Generate all possible arrays that could create given BST
+
 ## Quick Test Commands
 
 ```bash
@@ -105,9 +124,13 @@ swift test
 # Test all stacks and queues problems
 ./swift-stacks-queues.sh
 
+# Test all trees and graphs problems
+./swift-trees-graphs.sh
+
 # Test individual problems
 ./swift-test.sh isUnique
 ./swift-test.sh removeDups
 ./swift-test.sh threeStacks
-./swift-test.sh animalShelter
+./swift-test.sh trees
+./swift-test.sh validateBST
 ```
