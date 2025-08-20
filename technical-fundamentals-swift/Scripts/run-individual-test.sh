@@ -25,12 +25,35 @@ if [ $# -eq 0 ]; then
     echo "  - palindromePermutation"
     echo "  - oneAway"
     echo "  - stringCompression"
-<<<<<<< HEAD
-=======
     echo "  - rotateMatrix"
     echo "  - zeroMatrix"
->>>>>>> main
     echo "  - stringRotation"
+    echo "  - linkedListNode"
+    echo "  - removeDups"
+    echo "  - kthToLast"
+    echo "  - deleteMiddleNode"
+    echo "  - partition"
+    echo "  - sumLists"
+    echo "  - sumListsForwardOrder"
+    echo "  - palindrome"
+    echo "  - intersection"
+    echo "  - loopDetection"
+    echo "  - threeStacks"
+    echo "  - stackMin"
+    echo "  - stackOfPlates"
+    echo "  - queueViaStacks"
+    echo "  - sortStack"
+    echo "  - animalShelter"
+    echo "  - trees"
+    echo "  - hasRouteBetweenNodes"
+    echo "  - minimalTree"
+    echo "  - listOfDepths"
+    echo "  - checkBalanced"
+    echo "  - validateBST"
+    echo "  - successor"
+    echo "  - buildOrder"
+    echo "  - firstCommonAncestor"
+    echo "  - bstSequences"
     echo -e "\n${YELLOW}Example: $0 isUnique${NC}"
     exit 1
 fi
@@ -56,17 +79,92 @@ case "$test_name" in
     "stringCompression")
         full_test_name="StringCompressionTests"
         ;;
-<<<<<<< HEAD
-=======
     "rotateMatrix")
         full_test_name="RotateMatrixTests"
         ;;
     "zeroMatrix")
         full_test_name="ZeroMatrixTests"
         ;;
->>>>>>> main
     "stringRotation")
         full_test_name="StringRotationTests"
+        ;;
+    "linkedListNode")
+        full_test_name="LinkedListNodeTests"
+        ;;
+    "removeDups")
+        full_test_name="RemoveDupsTests"
+        ;;
+    "kthToLast")
+        full_test_name="KthToLastTests"
+        ;;
+    "deleteMiddleNode")
+        full_test_name="DeleteMiddleNodeTests"
+        ;;
+    "partition")
+        full_test_name="PartitionTests"
+        ;;
+    "sumLists")
+        full_test_name="SumListsTests"
+        ;;
+    "sumListsForwardOrder")
+        full_test_name="SumListsForwardOrderTests"
+        ;;
+    "palindrome")
+        full_test_name="PalindromeTests"
+        ;;
+    "intersection")
+        full_test_name="IntersectionTests"
+        ;;
+    "loopDetection")
+        full_test_name="LoopDetectionTests"
+        ;;
+    "threeStacks")
+        full_test_name="ThreeStacksTests"
+        ;;
+    "stackMin")
+        full_test_name="StackMinTests"
+        ;;
+    "stackOfPlates")
+        full_test_name="StackOfPlatesTests"
+        ;;
+    "queueViaStacks")
+        full_test_name="QueueViaStacksTests"
+        ;;
+    "sortStack")
+        full_test_name="SortStackTests"
+        ;;
+    "animalShelter")
+        full_test_name="AnimalShelterTests"
+        ;;
+    "trees")
+        full_test_name="TreesTests"
+        ;;
+    "hasRouteBetweenNodes")
+        full_test_name="HasRouteBetweenNodesTests"
+        ;;
+    "minimalTree")
+        full_test_name="MinimalTreeTests"
+        ;;
+    "listOfDepths")
+        full_test_name="ListOfDepthsTests"
+        ;;
+    "checkBalanced")
+        full_test_name="CheckBalancedTests"
+        ;;
+    "validateBST")
+        full_test_name="ValidateBSTTests"
+        ;;
+    "successor")
+        full_test_name="SuccessorTests"
+        ;;
+    "buildOrder")
+        full_test_name="BuildOrderTests"
+        ;;
+    "firstCommonAncestor")
+        full_test_name="FirstCommonAncestorTests"
+        ;;
+    "bstSequences")
+        full_test_name="BSTSequencesTests"
         ;;
     *)
         full_test_name="$test_name"
@@ -94,7 +192,7 @@ if [ $exit_code -eq 0 ]; then
     echo -e "${GREEN}${BOLD}${CHECK} Test ${test_name} PASSED!${NC}"
     
     # Generate hash for individual test
-    password=$(echo -n "$test_name" | md5)
+    password=$(echo -n "$test_name" | shasum -a 256 | cut -c1-8)
     echo -e "${GREEN}Individual test password: ${password}${NC}"
 else
     echo -e "${RED}${BOLD}${CROSS} Test ${test_name} FAILED!${NC}"
@@ -102,10 +200,8 @@ else
 fi
 
 echo -e "\n${BLUE}${BOLD}Quick Commands:${NC}"
-<<<<<<< HEAD
-echo "Run all string tests: ./Scripts/run-strings.sh"
-echo "Run specific test: ./Scripts/run-individual-test.sh <test_name>"
-=======
 echo "Run all tests: swift test"
 echo "Run specific test: ./swift-test.sh <test_name>"
->>>>>>> main
+
+# Exit with the same code as the test command
+exit $exit_code
