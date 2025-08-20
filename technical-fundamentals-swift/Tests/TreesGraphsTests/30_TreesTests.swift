@@ -26,7 +26,7 @@ final class TreesTests: XCTestCase {
         let tree = Tree<Int>()
         var visitedValues: [Int] = []
         
-        tree.dfs(node: root) { node in
+        tree.dfs(root) { node in
             visitedValues.append(node.value)
         }
         
@@ -57,7 +57,7 @@ final class TreesTests: XCTestCase {
         let tree = Tree<Int>()
         var visitedValues: [Int] = []
         
-        tree.bfs(node: root) { node in
+        tree.bfs(root) { node in
             visitedValues.append(node.value)
         }
         
@@ -69,7 +69,7 @@ final class TreesTests: XCTestCase {
         let tree = Tree<Int>()
         var visitedValues: [Int] = []
         
-        tree.dfs(node: nil) { node in
+        tree.dfs(nil) { node in
             visitedValues.append(node.value)
         }
         
@@ -80,7 +80,7 @@ final class TreesTests: XCTestCase {
         let tree = Tree<Int>()
         var visitedValues: [Int] = []
         
-        tree.bfs(node: nil) { node in
+        tree.bfs(nil) { node in
             visitedValues.append(node.value)
         }
         
