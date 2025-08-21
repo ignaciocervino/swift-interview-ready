@@ -1,6 +1,6 @@
 // Write the basic tree algorithms of Depth-first-search and Breadth-first search.
 
-public class TreeNode<T: Equatable & Hashable> {
+public class TreeNode<T: Equatable & Hashable>: Hashable & Equatable {
     public var value: T
     public var left: TreeNode<T>?
     public var right: TreeNode<T>?
@@ -9,6 +9,14 @@ public class TreeNode<T: Equatable & Hashable> {
         self.value = value
         self.left = left
         self.right = right
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(ObjectIdentifier(self))
+    }
+
+    public static func == (lhs: TreeNode<T>, rhs: TreeNode<T>) -> Bool {
+        lhs === rhs
     }
 }
 
