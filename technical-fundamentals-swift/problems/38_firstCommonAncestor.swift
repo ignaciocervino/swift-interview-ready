@@ -5,6 +5,47 @@
 // NOTE: This is not necessarily a binary search tree.
 
 public func firstCommonAncestor<T: Equatable & Hashable>(_ root: TreeNode<T>?, _ p: TreeNode<T>, _ q: TreeNode<T>) -> TreeNode<T>? {
-    // TODO: Implement first common ancestor algorithm
+    var hasP = false
+    var hasQ = false
+    dfsPreOrder(root) { node in 
+        if node == q {
+            hasQ = true
+        }
+        if node == p {
+            hasP = true
+        }
+    }
+
+    guard hasP, hasQ else { return nil }
+    return lca(root, p, q)
+}
+
+public func lca<T: Equatable & Hashable>(_ root: TreeNode<T>?, _ p: TreeNode<T>, _ q: TreeNode<T>) -> TreeNode<T>? {
+    guard let root else { return nil }
+
+    if root == p || root == q {
+        return root
+    }
+
+    let left = lca(root.left, p, q)
+    let right = lca(root.right, p, q)
+
+    if let right, let left {
+        return root
+    } else if let left {
+        return left
+    } else if let right {
+        return right
+    }
+
     return nil
+}
+
+public func dfsPreOrder<T: Equatable & Hashable>(_ root: TreeNode<T>?, _ visit: (TreeNode<T>) -> Void) {
+    guard let root else { return }
+
+    visit(root)
+    dfsPreOrder(root.left, visit)
+    dfsPreOrder(root.right, visit)
+
 }
