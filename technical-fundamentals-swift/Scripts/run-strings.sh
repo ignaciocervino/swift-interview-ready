@@ -27,6 +27,8 @@ string_tests=(
     "PalindromePermutationTests"
     "OneAwayTests"
     "StringCompressionTests"
+    "RotateMatrixTests"
+    "ZeroMatrixTests"
     "StringRotationTests"
 )
 
